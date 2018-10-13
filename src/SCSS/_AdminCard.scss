@@ -1,0 +1,95 @@
+$main-width:140px;
+$main-margin:40px;
+
+.main--container{
+    max-width: 1000px;
+    margin: 35px auto;
+    font-family: 'lato',sans-serif;
+
+    .admin--button__style {
+        color: white;
+        font-size: 1rem;
+        padding: 1%;
+        background: black;
+        font-family: 'lato';
+        font-weight: 300;
+        text-transform: uppercase;
+        margin: 5px;
+
+        &:hover{
+            background: #a3a096;
+            cursor: pointer;
+        }
+    }
+
+    .main--nav__style{
+        display: flex;
+        justify-content: space-evenly;
+        box-shadow: 4px 4px 4px gray;
+        border: .5px solid black;
+        margin: 15px 0;
+        padding: 20px;
+        font-weight: 500;
+
+        .nav--item__style{
+            font-size: 2rem;
+            width: $main-width;
+            text-align: center;
+        }
+    }
+
+    .card--container{
+        display: flex;
+        justify-content: space-evenly;
+        box-shadow: 4px 4px 4px gray;
+        border: .5px solid black;
+        padding: 10px;
+        margin: 50px 0;
+
+        .card--title__style{
+            width: $main-width;
+            margin:$main-margin 0;
+            text-align: center;
+        }
+        .card--img__style{
+            width: $main-width;
+            height: 150px;
+        }
+        .card--price__style{
+            width: $main-width;
+            margin:$main-margin 0;
+            text-align: center;
+            font-size: 2rem;
+        }
+        .card--info__style{
+            width: $main-width;
+            margin:$main-margin 0;
+            text-align: center;
+        }
+        .card--edit__style{
+            width: $main-width;
+            margin:$main-margin 0;
+            font-size: 3rem;
+            text-align: center;
+            cursor: pointer;
+
+            &:hover{
+                color: gray;
+            }
+        }
+        .card--delete__style{
+            width: $main-width;
+            margin:$main-margin 0;
+            font-size: 3rem;
+            text-align: center;
+            cursor: pointer;
+
+            &:hover{
+                color: gray;
+            }
+        }
+    }
+}
+
+
+

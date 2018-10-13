@@ -1,0 +1,101 @@
+*{
+    font-family: 'lato',sans-serif;
+}
+
+/****************
+Nav Bar section
+*****************/
+nav{
+    font-family: 'Lato', sans-serif;
+    background: #F9F9F9 ;
+
+    .mobile--link__style{
+        color:#F9F9F9;
+        text-decoration: none;
+        font-size: 1.5rem;
+        width: 100%;
+    }
+
+    .desktop--nav{
+        display: none;
+    }
+
+    .mobile--nav__container{
+
+        .mobile--top__container{
+            display: block;
+            text-align: center;
+
+            .Img__Size{
+                width: 60px;
+                cursor: pointer;
+            }
+
+            .top--text{
+                font-size: 2rem;
+                font-weight: 900;
+                color: black;
+            }
+
+            .fa-search{
+                font-size: 1.5rem;
+            }
+        }
+    
+        #mobile--nav__display{
+            background:  #322F3D ;
+            text-align: center;
+            display: none;
+
+            li{
+                border:1px solid white;
+            }
+    
+            img{
+                display: none;
+            }
+        }
+        
+    }
+}
+
+
+@media screen and (min-width:1024px){
+    nav{
+        .desktop--nav{
+            display: block;
+            padding: 25px 0px;
+
+            ul{
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+
+                .desktop--link__style{
+                    color:black;
+                    text-decoration: none;
+                    margin-top: 30px;
+                    font-size: 1.5rem;
+                    transition:.5s ease-in-out;
+
+                    &:hover{
+                        color: #cacaca;
+                        font-size: 2.3rem;
+                    }
+                }
+            }
+
+            img{
+                width: 60px;
+                transition:.7s ease-in-out;
+                &:hover{
+                    transform: scale(2)
+                }
+            }
+        }
+
+        .mobile--nav__container{
+            display: none;
+        }
+    }
+}

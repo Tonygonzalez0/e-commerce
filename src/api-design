@@ -1,0 +1,25 @@
+Design an API to serve the information needed for the eCommerce site
+Must include plans for an admin to view/add/edit/delete products
+
+GET::rocksrus.com/products = Allows to view all products.
+GET::rocksrus.com/products/<productID> = Allows to view a specified products.
+POST::rocksrus.com/products = Insert new product.
+PUT::rocksrus.com/products/<productID> = Updates a specified product.
+DELETE::rocksrus.com/products/<productID> = Deletes a specified product.
+
+Must include plans for an admin to view/add/edit/delete new admin users
+
+GET::rocksrus.com/admins/<adminID> = Allows to view specified admin.
+GET::rocksrus.com/admins = Allows to view all admins.
+POST::rocksrus.com/admins = Insert new admins.
+PUT::rocksrus.com/admins/<adminID> = Updates a specified admins.
+DELETE::rocksrus.com/admins/<adminID> = Deletes a specified admins.
+
+
+Must include plans for an admin to view/delete information submitted through contact form
+
+GET::rocksrus.com/contact/<contactID> = Allows to view specified contact form.
+GET::rocksrus.com/contact = Allows to view all contact form.
+DELETE::rocksrus.com/contact/<contactID> = Deletes a specified contact form.
+
+
