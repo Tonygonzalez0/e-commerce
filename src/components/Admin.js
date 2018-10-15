@@ -8,10 +8,10 @@ import AddModalCard from "./AddModalCard";
 const Admin = (props) =>{
     const itemList = props.items.map(List => {
     return (
-        <div key={List._id}>
+        <div key={List.productId}>
         <AdminCard
         items = {props.items}
-        _id = {List._id}
+        _id = {List.productId}
         title = {List.title}
         description = {List.description}
         productImages = {List.productImages}
@@ -31,19 +31,19 @@ const Admin = (props) =>{
 
     const contactList = props.contactData.map(List =>{
         return (
-            <div key={List._id}>
+            <div key={List.contactId}>
             <ContactCard
-           firstName = {List.firstName}
-           lastName = {List.lastName}
-           email = {List.email}
-           comment = {List.comment}
+            firstName = {List.firstName}
+            lastName = {List.lastName}
+            email = {List.email}
+            comment = {List.comment}
             />
             </div>
         )
     })
 
     return(
-        <div clashandletoggleNavMenusName='main--container'>
+        <div className='main--container'>
             <button onClick= {()=>props.handletoggleAdminPage()} className = "admin--button__style">Switch pages from Product/Contact</button>
             { props.toggleAdminPageStatus === true &&
                 <div>

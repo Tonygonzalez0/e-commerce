@@ -1,11 +1,8 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var _ = require('lodash');
-
-var {mongoose} = require('../db/mongoose');
-var {Product} = require('../db/models/Product');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mysql = require('mysql');
 const cors = require("cors");
-var app = express ();
+const app = express ();
 
 app.use(bodyParser.json());
 
@@ -16,68 +13,111 @@ app.use(function(req, res, next) {
   });
   app.use(cors());
 
+  const connection = mysql.createConnection({
+    host     : 'road2hire.ninja',
+    user     : 'r2hstudent',
+    password : 'SbFaGzNgGIE8kfP',
+    database : 'tgonzalez'
+  });
+
+  connection.connect(err => {
+      if(err) throw err;
+      console.log("Connected!")
+  })
+
 //GET
 app.get('/products',(req,res)=>{
-    Product.find().then((product)=>{
-        res.send(product);
-    },(e)=>{
-        res.status(400).send(e);
-    });
+      const queryString = "SELECT * FROM test"
+      connection.query(queryString, (err,rows,fields) => {
+        if(err){
+            console.log(`Failed to query for users: ${err}`)
+            res.sendStatus(500)
+            return 
+        }
+        console.log("We fetched successfully!")
+        res.send(rows)
+      })
 })
 
 //GET by ID
 app.get('/products/:id',(req,res) =>{
-
-    const id = req.params.id;
-    Product.findById(id).then((product)=>{
-        res.send({product});
-    },(e)=>{
-        res.status(404).send('Unable to find Product');
-    });
+      const productId = req.params.id;
+      const queryString = "SELECT * FROM test where productId=?"
+      connection.query(queryString,[productId], (err,rows,fields) => {
+        if(err){
+            console.log(`Failed to query for users: ${err}`)
+            res.sendStatus(500)
+            return 
+        }
+        console.log("We fetched successfully!")
+        res.json(rows)
+      })
 })
 
-//ADD
-app.post('/products', (req, res) => {
-    const {title, description,price,productCategory,productImages} = req.body;
-        var product = new Product ( {
-            title,
-            description,
-            price,
-            productCategory,
-            productImages
-        });
-        product.save().then(product => {
-            res.send(product);
-        }).catch( err => res.status(400).send(err.message));
+// //ADD
+app.post("/products", (req, res) => {
+    const {
+        title,
+        description,
+        price,
+        productCategory,
+        productImages
+    } = req.body;
+  
+    const queryString = `INSERT INTO test (title, description, price,productCategory, productImages)
+          VALUES ("${title}","${description}","${price}","${productCategory}","${productImages}")`;
+  
+    connection.query(queryString, (err, rows) => {
+        if(err){
+            console.log(`Failed to add users: ${err}`)
+            res.sendStatus(500)
+            return 
+        }
+        console.log("We added successfully!")
+      })
 })
 
 //Delete
-app.delete('/products/:id', (req, res) => {
-    const id = req.params.id;
-    Product.findByIdAndDelete(id).then(product => {
-        if (product) {
-            return res.send(product);
-        } else {
-            return res.status(404).send('Unable to find id');
-        }
-    }).catch(err => res.status(400).send(err));
-})
+app.delete('/products/:id',(req,res) => {
+    const productId = req.params.id;
+    const queryString = "DELETE FROM test where productId = ?"
+    connection.query(queryString,[productId], (err,rows,fields) => {
+      if(err){
+        console.log(`Failed to delete users: ${err}`)
+        res.sendStatus(500)
+        return 
+      }else{
+        console.log('We deleted successfully!')
+      }
+    })
+  });
 
 
-//UPDATE
-app.put('/products/:id', (req, res) => {
-    const id = req.params.id;
-    let updatedProduct = _.pick(req.body,['title', 'description','price','productCategory','productImages']);
-    Product.findByIdAndUpdate(id,{$set:updatedProduct},{new: true}).then(product => {
-        if (!product) {
-            return res.status(404).send('Unable to find id');
+// //UPDATE
+app.put("/products/:id", (req, res) => {
+    const productId = req.params.id;
+    const {
+        title,
+        description,
+        price,
+        productCategory,
+        productImages
+    } = req.body;
+
+    const queryString = `UPDATE test SET title = "${title}", description = "${description}", price = "${price}",
+        productCategory = "${productCategory}", productImages = "${productImages}"
+        WHERE productId = ${productId}`;
+  
+    connection.query(queryString, (err,rows) => {
+        if(err){
+            console.log(`Failed to query update user: ${err}`)
+            res.sendStatus(500)
+            return 
         }
-        product.save().then(updatedProduct => res.send(updatedProduct));
-    }).catch(err => res.status(400).send(err));
-})
+        res.send(rows)
+      })
+  });
 
 app.listen(3001,()=>{
     console.log('Started on port 3001');
 });
-
-module.exports = {app};
