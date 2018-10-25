@@ -185,11 +185,6 @@ class App extends Component {
     var editPrice = event.target.editPrice.value;
     var editDescription = event.target.editInfo.value;
     var editProductCategory = event.target.editProductCategory.value;
-    
-    // var editProductarray = this.state.items;
-    // // var index = editProductarray.findIndex( items => items._id === id);
-
-    // // var editProduct = this.state.items[index];
 
     const updatedInfo = {
       title : editTitle,
@@ -198,9 +193,6 @@ class App extends Component {
       productCategory : editProductCategory,
       productImages : editProductImages,
     }
-
-    console.log(updatedInfo);
-
     
     fetch(`http://localhost:3001/products/${id}`, {
       method: "PUT",
