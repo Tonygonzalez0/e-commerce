@@ -7,8 +7,8 @@ const AdminCard =(props)=>{
             <img className='card--img__style' src={props.productImages} alt="test" />
             <p className='card--price__style'>${props.price}</p>
             <p className='card--info__style'>{props.description}</p>
-            <i className="far fa-edit card--edit__style" onClick={(event)=>props.toggleEditModal(props._id,event)} ></i>
-            <i className="fas fa-trash-alt card--delete__style" onClick={()=>props.handleDelete(props._id)}></i>
+            <i className="far fa-edit card--edit__style" onClick={(event)=>props.toggleEditModal(props.productId,event)} ></i>
+            <i className="fas fa-trash-alt card--delete__style" onClick={()=>props.handleDelete(props.productId)}></i>
         </div>
     )
 };

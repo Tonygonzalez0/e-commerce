@@ -7,7 +7,6 @@ const Product = (props) => {
             props.product.map(List => {
             return (
                 <Card
-                key={List._id}
                 title={List.title}
                 description={List.description}
                 productImages={List.productImages}

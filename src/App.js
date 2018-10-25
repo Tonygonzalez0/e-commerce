@@ -180,27 +180,21 @@ class App extends Component {
   handleEdit(id,event){
     event.preventDefault();
 
-    var editTitle = document.getElementById("edit-title").value;
-    var editProductImages = document.getElementById("edit-image").value;  
-    var editPrice = document.getElementById("edit-price").value;
-    var editDescription = document.getElementById("edit-info").value;
-    var editProductCategory = document.getElementById("edit-productCategory").value;
+    var editTitle = event.target.editTitle.value;
+    var editProductImages = event.target.editImage.value;  
+    var editPrice = event.target.editPrice.value;
+    var editDescription = event.target.editInfo.value;
+    var editProductCategory = event.target.editProductCategory.value;
     
-    var editProductarray = this.state.items;
-    var index = editProductarray.findIndex( items => items._id === id);
+    // var editProductarray = this.state.items;
+    // // var index = editProductarray.findIndex( items => items._id === id);
 
-    var editProduct = this.state.items[index];
-
-    var title = editProduct.title;
-    var productImages = editProduct.productImages;
-    var price = editProduct.price;
-    var description = editProduct.price;
-    var productCategory = editProduct.productCategory;
+    // // var editProduct = this.state.items[index];
 
     const updatedInfo = {
       title : editTitle,
       description : editDescription,
-      price :  parseInt(editPrice),
+      price : editPrice,
       productCategory : editProductCategory,
       productImages : editProductImages,
     }

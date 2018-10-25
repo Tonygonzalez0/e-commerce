@@ -11,7 +11,7 @@ const Admin = (props) =>{
         <div key={List.productId}>
         <AdminCard
         items = {props.items}
-        _id = {List.productId}
+        productId = {List.productId}
         title = {List.title}
         description = {List.description}
         productImages = {List.productImages}
@@ -24,6 +24,7 @@ const Admin = (props) =>{
         items = {List}
         handleEdit = {props.handleEdit}
         toggleEditModal = {props.toggleEditModal}
+        productId = {List.productId}
         />
         </div>
     )
