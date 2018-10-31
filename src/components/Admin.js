@@ -43,7 +43,7 @@ const Admin = (props) =>{
     })
 
     return(
-        <div clashandletoggleNavMenusName='main--container'>
+        <div className='main--container'>
             <button onClick= {()=>props.handletoggleAdminPage()} className = "admin--button__style">Switch pages from Product/Contact</button>
             { props.toggleAdminPageStatus === true &&
                 <div>

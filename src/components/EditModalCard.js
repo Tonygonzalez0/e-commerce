@@ -8,19 +8,19 @@ const EditModalCard =(props)=>{
             <span className="close--stlye" onClick={()=>props.toggleEditModal(items._id)}>&times;</span>
                 <form  onSubmit={(event)=>props.handleEdit(items._id,event)}>       
                     <label>Title</label>
-                    <input type="text" id="edit-title" name="title"/>
+                    <input type="text" id="edit-title" name="editTitle"/>
 
                     <label>Image</label>
-                    <input type="text" id="edit-image" name="image"/>
+                    <input type="text" id="edit-image" name="editImage"/>
 
                     <label>Price</label>
-                    <input type="text" id="edit-price" name="price"/>
+                    <input type="text" id="edit-price" name="editPrice"/>
 
                     <label>Info</label>
-                    <input type="text" id="edit-info" name="info"/>
+                    <input type="text" id="edit-info" name="editInfo"/>
 
                     <label>Product Category</label>
-                    <input type="text" id="edit-productCategory" name="productCategory"/>
+                    <input type="text" id="edit-productCategory" name="editProductCategory"/>
 
                     <input type="submit" className='form--submit__style'/>
                 </form>

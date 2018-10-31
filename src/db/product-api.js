@@ -16,6 +16,8 @@ app.use(function(req, res, next) {
   });
   app.use(cors());
 
+  mongoose.set('useFindAndModify', false);
+
 //GET
 app.get('/products',(req,res)=>{
     Product.find().then((product)=>{
