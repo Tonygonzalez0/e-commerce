@@ -34,7 +34,6 @@ app.get('/contacts',(req,res)=>{
             res.sendStatus(500)
             return 
         }
-
         console.log("We fetched successfully!")
         res.json(rows)
       })
@@ -51,9 +50,8 @@ app.post("/contacts", (req, res) => {
     } = req.body;
   
     const queryString = `INSERT INTO test_contact (firstName, lastName, email,comment)
-          VALUES ("${firstName}","${lastName}","${email}","${comment}")`;
-  
-    connection.query(queryString, (err, rows) => {
+          VALUES (?,?,?,?)`;  
+    connection.query(queryString,[firstName,lastName,email,comment], (err, rows) => {
         if(err){
             console.log(`Failed to add contacts: ${err}`)
             res.sendStatus(500)

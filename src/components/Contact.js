@@ -11,7 +11,7 @@ const Contact = (props) => {
                 <input type="text" id="lastName" name="lastName" required/>
 
                 <label>Email:</label>
-                <input type="email" id="email" name="email" required/>
+                <input type="text" id="email" name="email" required/>
 
                 <label>Comments:</label>
                 <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Any other Comments?" required></textarea>

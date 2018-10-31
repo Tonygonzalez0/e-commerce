@@ -65,9 +65,9 @@ app.post("/products", (req, res) => {
     } = req.body;
   
     const queryString = `INSERT INTO test (title, description, price,productCategory, productImages)
-          VALUES ("${title}","${description}","${price}","${productCategory}","${productImages}")`;
+          VALUES (?,?,?,?,?)`;
   
-    connection.query(queryString, (err, rows) => {
+    connection.query(queryString,[title,description,price,productCategory,productImages], (err, rows) => {
         if(err){
             console.log(`Failed to add users: ${err}`)
             res.sendStatus(500)
@@ -104,11 +104,11 @@ app.put("/products/:id", (req, res) => {
         productImages
     } = req.body;
 
-    const queryString = `UPDATE test SET title = "${title}", description = "${description}", price = "${price}",
-        productCategory = "${productCategory}", productImages = "${productImages}"
-        WHERE productId = ${productId}`;
-  
-    connection.query(queryString, (err,rows) => {
+    const queryString = `UPDATE test SET title = ?, description = ?, price = ?,
+        productCategory = ?, productImages = ?
+        WHERE productId = ?`;
+          
+    connection.query(queryString,[title,description,price,productCategory,productImages,productId], (err,rows) => {
         if(err){
             console.log(`Failed to query update user: ${err}`)
             res.sendStatus(500)

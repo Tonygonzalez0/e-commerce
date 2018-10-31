@@ -178,8 +178,6 @@ class App extends Component {
   }
 
   handleEdit(id,event){
-    event.preventDefault();
-
     var editTitle = event.target.editTitle.value;
     var editProductImages = event.target.editImage.value;  
     var editPrice = event.target.editPrice.value;
